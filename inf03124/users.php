@@ -44,23 +44,29 @@
 
         <form method="post">
 
-            <input type="number">
+            <input type="number" name="numer">
             <input type="submit" value="ZOBACZ" class="pr1">
         
         </form>
         <hr>
         <?php
-             $con = new mysqli('127.0.0.1','root','','dane4');
-             $sql= "SELECT imie,nazwisko,rok_urodzenia,opis,zdjecie,nazwa FROM osoby JOIN hobby ON osoby.Hobby_id=hobby.id";
-             $res =$con->query($sql);
-             $rows = $res->fetch_all(MYSQLI_ASSOC);
-             print_r($rows)
-
-             $numer = 0;
              if(isset($_POST["numer"])){
-                $numer = $_POST["numer"]-2;
-                echo "<h2>".$rows[$numer['id']].".".$rows[$numer]["imie"]." ".$rows[$numer]
+             $con = new mysqli('127.0.0.1','root','','dane4');
+             $sql= "SELECT imie,nazwisko,rok_urodzenia,opis,zdjecie,nazwa,osoby.id FROM osoby JOIN hobby ON hobby.id=osoby.Hobby_id WHERE osoby.id=".$_POST["numer"];
+             $res =$con->query($sql);
+            //  $rows = $res->fetch_all(MYSQLI_ASSOC);
+             $row = $res->fetch_assoc();
+            //  print_r($row);
+
+            //  $numer = 0;
+            //     $numer = $_POST["numer"];
+                echo "<h2>".$row["id"]." ".$row["imie"]." ".$row["nazwisko"]."</h2>";
+                echo "<img src=".$row["zdjecie"]."><br>";
+                echo "<p>Rok urodzenia: ".$row["rok_urodzenia"]."</p>";
+                echo "<p>opis:  ".$row["opis"]."</p>";
+                echo "<p>hobby: ".$row["nazwa"]."</p>";
              }
+
         ?>
         
 
@@ -74,3 +80,6 @@
     
 </body>
 </html>
+
+<!-- osoby.Hobby_id=hobby.id -->
+<!-- .$rows[$numer]["zdjecie"]."".$rows[$numer]["rok_urodzenia"]; -->
