@@ -1,0 +1,37 @@
+*{
+    font-family: Arial, Helvetica, sans-serif;
+}
+.b1{
+    background-color: #AF4448;
+    color: white;
+    text-align: center;
+    height: 20px;
+}
+.bl1{
+    background-color: #FFA4A2;
+    height: 650px;
+    width: 50%;
+    float: left;
+}
+.bp1{
+    background-color: #FFA4A2;
+    height: 650px;
+    width: 50%;
+    float: left;
+}
+.s1{
+    background-color: #AF4448;
+    color: white;
+    text-align: center;
+    height: 20px;
+    clear: both;
+}
+.bl1 h4{
+    margin: 0px;
+}
+.pr1{
+    background-color: #AF4448;
+    color: white;
+    padding: 5px;
+    margin: 10px;
+}
